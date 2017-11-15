@@ -19,23 +19,23 @@
 <body>
     <!-- formulario para el inicio de sesion -->
     <div class="container">
-    <h1 class="welcome text-center">Bienvenido al sistema de control escolar de<br> Univercidad Alfa y Omega</h1>
+    <h1 class="welcome text-center">Bienvenido Al Sistema De Control<br> Univercidad Alfa y Omega</h1>
         <div class="card card-container"><br>
-        <center><img src="images/logo.png" alt=""></center>
+        <center><a href="http://www.tabscoob.org/alfayomega/"><img src="images/logo.png" alt="" style="width: 35%;"></a></center>
         <hr>
 
-            <form class="form-signin">
+            <form class="form-signin" action="modules/admin/log/login.php" method="post">
                 <span id="reauth-email" class="reauth-email"></span>
                 <p class="input_title">Usuario</p>
-                <input type="text" id="inputEmail" class="login_box" placeholder="admin" required autofocus>
+                <input type="text" name="txtUsername" class="login_box" placeholder="admin" required autofocus>
                 <p class="input_title">Password</p>
-                <input type="password" id="inputPassword" class="login_box" placeholder="******" required>
+                <input type="password" name="txtPassword" class="login_box" placeholder="******" required>
                 <div id="remember" class="checkbox">
                     <label>
                         
                     </label>
                 </div>
-                <button class="btn btn-lg btn-primary" type="submit">Iniciar sesion</button>
+                <button class="btn btn-lg btn-primary" type="submit" >Iniciar sesion</button>
             </form><!-- /form -->
         </div><!-- /card-container -->
     </div><!-- /container -->
