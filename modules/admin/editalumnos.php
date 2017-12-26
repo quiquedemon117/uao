@@ -43,12 +43,12 @@ $myData 	= mysqli_fetch_array($myQry);
     <tr>
       <td><strong>Matricula </strong></td>
       <td><strong>:</strong></td>
-      <td align="left"><input class="form-control" name="tid" value="<?php echo $myData['id']; ?>" size="15" readonly maxlength="15" /></td>
+      <td align="left"><input class="form-control" name="tid" value="<?php echo $myData['id']; ?>" size="15" maxlength="15" /></td>
     </tr>
      <tr>
       <td><strong>Nombre </strong></td>
       <td><strong>:</strong></td>
-      <td align="left"><input class="form-control" name="t2" value="<?php echo $myData['nombre']; ?>" size="100" maxlength="100" /></td>
+      <td align="left"><input class="form-control" name="t2" value="<?php echo $myData['nombre']; ?>" size="180" maxlength="100" /></td>
     </tr> 
     <tr>
       <td><strong>Carrera </strong></td>
@@ -63,7 +63,7 @@ $myData 	= mysqli_fetch_array($myQry);
      <tr>
       <td><strong>Status </strong></td>
       <td><strong>:</strong></td>
-      <td align="left"><input class="form-control" name="t11" value="<?php echo $myData['estatus']; ?>" size="10" maxlength="10" /></td>
+      <td align="left"><select class="form-control" name="t11" required ><option><?php echo $myData['estatus']; ?></option><option>INSCRITO</option><option>REINSCRITO</option><option>BAJA TEMPORAL</option><option>EGRESADO</option><option>REVALIDADO</option></select></td>
     </tr>  
     <tr>
       <td><strong>Estado </strong></td>

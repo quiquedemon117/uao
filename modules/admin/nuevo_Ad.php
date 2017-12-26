@@ -20,7 +20,7 @@ $d2	=  $_POST['t2'];
 <div class="col-md-offset-3 col-md-6">
 <div class="form-group">
 <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" name="frmadd" >
-<table class="table table-hover table-striped" width="100%" style="margin-top:0px;">
+<table class="table table-hover table-condensed" width="100%" style="margin-top:0px;">
 	<tr>
 	  <thead colspan="3" class="thead-inverse"><h1>Nuevo Adeudo</h1></thead>
 	</tr>

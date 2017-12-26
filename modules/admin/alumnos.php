@@ -44,11 +44,11 @@ $maksData= ceil($jumlah/$baris);
         <td align="left"><?php echo $nomor; ?></td>
         <td align="left"><?php echo $myData['id']; ?></td>
         <td align="left"><?php echo $myData['nombre']; ?></td>
-        <td align="left"><?php echo $myData['carrera']; ?></td> 
+        <td align="left"><?php echo ucwords($myData['carrera']); ?></td> 
         <td align="left"><?php echo $myData['semestre']; ?></td>
         <td align="left"><?php echo $myData['estado']; ?></td>
-        <td width="44" align="center"><a href="?open=editalumnos&Kode=<?php echo $Kode; ?>" target="_self" alt="Edit Data">Editar</a></td>
-        <td width="42" align="center"><a href="?open=elialumnos&Kode=<?php echo $Kode; ?>" target="_self" alt="Delete Data" onclick="return confirm('Seguro que va a eliminar los datos del alumno... ?')">Borrar</a></td>
+        <td width="44" align="center"><a href="?open=editalumnos&Kode=<?php echo $Kode; ?>" target="_self" title="Editar Dato"><i class="glyphicon glyphicon-pencil"></i></a></td>
+        <td width="42" align="center"><a id="editar" href="?open=elialumnos&Kode=<?php echo $Kode; ?>" target="_self" title="Borrar Dato" onclick="return confirm('Seguro que va a eliminar los datos del alumno... ?')"><i class="glyphicon glyphicon-trash"></i></a></td>
       </tr>
       <?php } ?>
     </table></td>

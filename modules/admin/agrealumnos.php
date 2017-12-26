@@ -37,22 +37,22 @@ $d12	= $_POST['t12'] ;
 ?>
 <div class="col-md-offset-3 col-md-6">
 <div class="form-group">
-<form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" name="frmadd" >
-<table class="table table-hover table-striped" width="100%" style="margin-top:0px;">
+<form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" name="frmadd" id="form">
+<table class="table table-hover table-condensed" width="100%" style="margin-top:0px;">
 	<tr>
 	  <thead colspan="3" class="thead-inverse"><h1>Agregar alumnos</h1></thead>
 	</tr>
 	   <tr>
 	  	<td><strong>Carrera</strong></td>
 	  	<td><strong>:</strong></td>
-	  	<td align="left"><select name='t2' required class="form-control"><option></option>
+	  	<td align="left"><select name='t2' required class="form-control" id="t2"><option></option>
 <?php
 $mySql2 = "SELECT nombre_carrera FROM carrera  ORDER BY nombre_carrera";
 $myQry2 = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($koneksidb));
  while ($myData = mysqli_fetch_array($myQry2)) {
 
 ?>    
- <option><?php  echo $myData['nombre_carrera']; ?></option>
+ <option value='<?php  echo $myData['nombre_carrera']; ?>'><?php  echo ucwords($myData['nombre_carrera']); ?></option>
 
 <?php
  } 
@@ -62,7 +62,7 @@ $myQry2 = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($ko
 	  <tr>
 	  <td width="10%"><strong>Matricula</strong></td>
 	  <td width="1%"><strong>:</strong></td>
-	  <td width="85%" align="left"><input name="t1" class="form-control" value="<?php echo $valid;?>" size="10" maxlength="10" readonly /></td></tr>
+	  <td width="85%" align="left"><input name="t1" class="form-control" value="<?php echo $valid;?>" size="10" maxlength="10" readonly / id="t1"></td></tr>
 	  <tr>
 	  	<td><strong>Nombre</strong></td>
 	  	<td><strong>:</strong></td>
@@ -76,7 +76,7 @@ $myQry2 = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($ko
 	  <tr>
 	  	<td><strong>Status</strong></td>
 	  	<td><strong>:</strong></td>
-	  	<td align="left"><input name="t14" class="form-control" type="text" value="" size="10" maxlength="10" required></td>
+	  	<td align="left"><select name="t14" class="form-control" required ><option></option><option>INSCRITO</option><option>REINSCRITO</option><option>BAJA TEMPORAL</option><option>EGRESADO</option><option>REVALIDADO</option></select></td>
 	  </tr>
 	  <tr>
 	  	<td><strong>Estado</strong></td>
@@ -96,7 +96,7 @@ $myQry2 = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($ko
 	  <tr>
 	  	<td><strong>Codigo Postal</strong></td>
 	  	<td><strong>:</strong></td>
-	  	<td align="left"><input name="t8" class="form-control" type="text" value="" size="10" maxlength="6" required></td>
+	  	<td align="left"><input name="t8" class="form-control" type="number" value="" size="10" maxlength="6" required></td>
 	  </tr>
 	  <tr>
 	  	<td><strong>Correo</strong></td>
@@ -111,7 +111,7 @@ $myQry2 = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($ko
 	  <tr>
 	  	<td><strong>Telefono</strong></td>
 	  	<td><strong>:</strong></td>
-	  	<td align="left"><input name="t11" class="form-control" type="text" value="" size="20" maxlength="20" required></td>
+	  	<td align="left"><input name="t11" class="form-control" type="number" value="" size="20" maxlength="20" required></td>
 	  </tr>
 	   <tr>
 	  	<td><strong>Procedencia</strong></td>
@@ -120,9 +120,64 @@ $myQry2 = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($ko
 	  </tr>
 	<tr><td>&nbsp;</td>
 	  <td>&nbsp;</td>
-	  <td align="left"><input type="submit" class="btn btn-primary form-control" name="btnSimpan" value="Agregar" style="cursor:pointer;"></td>
+	  <td align="left"><button type="submit" class="btn btn-primary form-control" name="btnSimpan" value="Agregar" style="cursor:pointer;"><i class="glyphicon glyphicon-floppy-disk"></i> Agregar</button></td>
     </tr>
 </table>
 </form>
 </div>
 </div>
+
+<script  type="text/javascript" charset="utf-8" async defer>
+	$(document).ready(function(){
+		$('#form').change(function(){
+			var s = $('#t1').val();
+			var ss = $('#t2').val();
+
+			if(ss == 'licenciatura en administración-e'){
+			var cadena = 'AD '+s+' 17/2 COAA 10';
+				$('#t1').val(cadena);
+			}
+
+			if(ss == 'licenciatura en contaduría publica-e'){
+			var cadena2 = 'CP '+s+' 17/2 AOCC 10';
+				$('#t1').val(cadena2);
+			}
+
+			if(ss == 'licenciatura en ciencias políticas y administración publica-e'){
+			var cadena3 = 'CA '+s+' 17/2 CUPD';
+				$('#t1').val(cadena3);
+			}
+
+			if(ss == 'licenciatura en pedagogía-e'){
+			var cadena4 = 'PE '+s+' 17/2 CUJT06';
+				$('#t1').val(cadena4);
+			}
+
+			if(ss == 'ingeniería en gestión ambiental-e'){
+			var cadena4 = 'GA '+s+' 17/2 PAPA';
+				$('#t1').val(cadena4);
+			}
+
+			if(ss == 'ingeniería petrolera-e'){
+			var cadena4 = 'PE '+s+' 17/2 CUJT06';
+				$('#t1').val(cadena4);
+			}
+
+			if(ss == 'licenciatura en derecho-f'){
+			var cadena4 = 'DE '+s+' 17/2 CAMI05';
+				$('#t1').val(cadena4);
+			}
+
+			if(ss == 'licenciatura en psicología organizacional-f'){
+			var cadena4 = 'PO '+s+' 17/2 SOCM';
+				$('#t1').val(cadena4);
+			}
+
+			if(ss == 'licenciatura en informática administrativa-f'){
+			var cadena4 = 'IA '+s+' 17/2 PEUC';
+				$('#t1').val(cadena4);
+			}
+
+		});
+	});
+</script>

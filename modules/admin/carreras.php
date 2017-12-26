@@ -43,11 +43,11 @@ $maksData= ceil($jumlah/$baris);
       <tr>
         <td align="left"><?php echo $nomor; ?></td>
         <td align="left"><?php echo $myData['clave_carrera']; ?></td>
-        <td align="left"><?php echo $myData['nombre_carrera']; ?></td>
+        <td align="left"><?php echo ucwords($myData['nombre_carrera']); ?></td>
         <td align="left"><?php echo $myData['modalidad_carrera']; ?></td> 
         <td align="left"><?php echo $myData['categoria_carrera']; ?></td>
         <td align="left"><?php echo $myData['num_modulos']; ?></td>
-        <td width="44" align="center"><a href="?open=editcarreras&Kode=<?php echo $Kode; ?>" target="_self" alt="Edit Data">Editar</a></td>
+        <td width="44" align="center"><a href="?open=editcarreras&Kode=<?php echo $Kode; ?>" target="_self" alt="Editar Dato"<i class="glyphicon glyphicon-pencil"></i></a></td>
        
       </tr>
       <?php } ?>

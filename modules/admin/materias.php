@@ -45,7 +45,7 @@ $maksData= ceil($jumlah/$baris);
         <td align="left"><?php echo $myData['nombre_materia']; ?></td>
         <td align="left"><?php echo $myData['plan']; ?></td> 
         <td align="left"><?php echo $myData['creditos']; ?></td>
-        <td width="44" align="center"><a href="?open=editmaterias&Kode=<?php echo $Kode; ?>" target="_self" alt="Edit Data">Editar</a></td>
+        <td width="44" align="center"><a href="?open=editmaterias&Kode=<?php echo $Kode; ?>" target="_self" alt="Editar Dato"><i class="glyphicon glyphicon-pencil"></i></a></td>
        
       </tr>
       <?php } ?>

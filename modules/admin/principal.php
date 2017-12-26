@@ -14,6 +14,7 @@ include_once "library/inc.library.php";
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
 <link rel="stylesheet" type="text/css" href="../../css/sweetalert.css">
+<link rel="stylesheet" type="text/css" href="../../css/principal.css">
 <script src="../../js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../../js/sweetalert.min.js" type="text/javascript"></script>
@@ -75,7 +76,8 @@ include_once "library/inc.library.php";
                 <ul class="dropdown-menu">
                   <li><a href="?open=alumnos">Ver Todos</a></li><br>
                   <li><a href="?open=agrealumnos">Agregar</a></li><br>
-                  <li><a href="?open=calificacion">Subir Calificacion</a></li><br> 
+                  <li><a href="?open=calificacion">Subir Calificacion</a></li><br>
+                  <li><a href="?open=edit_calificacion">Editar Calificacion</a></li><br>  
 
                 </ul>
               </li>
@@ -90,7 +92,10 @@ include_once "library/inc.library.php";
                   <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Departamento<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="?open=nuevo_Ad">Nuevo Adeudo</a></li><br> 
+                  <li><a href="?open=nuevo_Ad">Nuevo Adeudo</a></li>
+                  <li><a href="?open=docentes">Agregar Docente</a></li>
+                  <li><a href="?open=verdocentes">Ver Docentes</a></li>
+                  <br> 
                 </ul>
               </li>
                <li class="dropdown">
@@ -101,7 +106,7 @@ include_once "library/inc.library.php";
                 </ul>
               </li>
 
-                  <li><a href="Log/logout.php">Cerrar sesion</a></li>
+                  <li><a href="Log/logout.php"><i class="glyphicon glyphicon-off"></i> Cerrar sesion</a></li>
                 </ul>
             </div>
           </div>

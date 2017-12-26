@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../../../css/sweetalert.css">
 <script src="../../../js/sweetalert.min.js" type="text/javascript"></script>
 </head>
@@ -8,7 +9,7 @@
 <?php
 if(isset($_POST['txtUsername'])){
 	session_start();
-require('..\library\inc.connection.php');
+require('../library/inc.connection.php');
 $usuario1= $_POST['txtUsername'];
 $clave1= $_POST['txtPassword'];
 $rs = mysqli_query($koneksidb, "SELECT * FROM usuarios WHERE Nombre='$usuario1' AND Password='$clave1'"); 

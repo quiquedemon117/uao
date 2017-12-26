@@ -21,8 +21,8 @@ $mySql2 = "SELECT nombre FROM alumnos where id='$Kode' ";
   </tr>
   <tr>
     <td colspan="2">
-	<table class="table-list" width="100%" border="0" cellspacing="1" cellpadding="2">
-      <tr>
+	<table class="table-list table table-hover table-condensed" width="100%" border="0" cellspacing="1" cellpadding="2">
+      <tr class="info">
         <th width="10%" align="left" bgcolor="#CCCCCC"><strong>Numero</strong></th>
         <th width="35%" align="left" bgcolor="#CCCCCC"><strong>Concepto</strong></th>
         <th width="20%" align="left" bgcolor="#CCCCCC"><strong>Fecha</strong></th>
@@ -41,7 +41,7 @@ $mySql2 = "SELECT nombre FROM alumnos where id='$Kode' ";
         <td align="left"><?php echo $nomor; ?></td>
         <td align="left"><?php echo $myData['concepto']; ?></td>
         <td align="left"><?php echo $myData['fecha']; ?></td>
-        <td width="40" align="center"><a href="?open=eliadeudo&Kode=<?php echo $Kode; ?>&Kode2=<?php echo $Kode2; ?>" target="_self" alt="Delete Data" onclick="return confirm('Seguro que va a eliminar... ?')">Borrar</a></td>
+        <td width="40" align="center"><a href="?open=eliadeudo&Kode=<?php echo $Kode; ?>&Kode2=<?php echo $Kode2; ?>" target="_self" alt="Delete Data" onclick="return confirm('Seguro que va a eliminar... ?')"><i class="glyphicon glyphicon-trash"></i></a></td>
       </tr>
       <?php } ?>
     </table></td>

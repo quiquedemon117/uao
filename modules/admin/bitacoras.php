@@ -1,12 +1,12 @@
+<script src="hightchart/highcharts.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="hightchart/js/modules/exporting.js" type="text/javascript" charset="utf-8" async defer></script>
+<link rel="stylesheet" type="text/css" href="hightchart/css/highcharts.css">
 <?php
-include("class/pDraw.class.php");
-include("class/pImage.class.php");
-include("class/pPie.class.php");
-include("class/pData.class.php");
-include_once "library/inc.sesadmin.php";
-include_once "library/inc.connection.php"; 
 
-$consulta="SELECT DISTINCT(carrera) FROM alumnos where estatus='REINSCRITO' order by carrera ";
+include_once "library/inc.connection.php";
+include_once "library/inc.sesadmin.php";  
+
+$consulta="SELECT DISTINCT(carrera) FROM alumnos order by carrera ";
 $r=mysqli_query($koneksidb,$consulta);
 $jum  = mysqli_num_rows($r);
 $datos=array();
@@ -17,7 +17,7 @@ $datos[]=$myData['carrera'];
   $datos2=array();
  for($i=1; $i<=count($datos); $i++){
   $val=$datos[$h];
-$consulta3="SELECT count(carrera) FROM alumnos where carrera='$val' and estatus='REINSCRITO'";
+$consulta3="SELECT count(carrera) FROM alumnos where carrera='$val'";
 $r3=mysqli_query($koneksidb,$consulta3);
  while ($myData = mysqli_fetch_array($r3)) {
 $datos2[]=$myData['count(carrera)'];
@@ -38,10 +38,10 @@ $h=$h+1;
   </tr>
   <tr>
     <td colspan="2">
-	<table class="table-list" width="62%" border="0" cellspacing="1" cellpadding="2">
-      <tr>
+	<table class="table-list table table-hover table-condensed" width="62%" border="0" cellspacing="1" cellpadding="2">
+      <tr class="info">
         <th width="40%" align="left" bgcolor="#CCCCCC"><strong>Carrera</strong></th>
-        <th width="20%" align="center" bgcolor="#CCCCCC"><strong>Alumnos Reinscritos</strong></th>
+        <th width="20%" align="center" bgcolor="#CCCCCC"><strong>Cantidad de Alumnos</strong></th>
         </tr>
 	<?php	
 	$h=0;
@@ -53,23 +53,51 @@ $h=$h+1;
       </tr>
     <?php $h=$h+1; }  ?>
     </table>
-<?php
-$tabla=new pData();
 
-$tabla->addPoints(array_values($datos2),"serie");
-$tabla->setSerieDescription("serie","Sexo");
+<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 
-$tabla->addPoints(array_values($datos),"etiquetas");
-$tabla->setAbscissa("etiquetas");
+<script type="text/javascript">
 
-$imagen=new pImage(600,400,$tabla, TRUE);
+// Build the chart
+Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },credits: {
+      enabled: false
+  },
+    title: {
+        text: 'Porcentaje de alumnos inscritos por carrera'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: 'Brands',
+        colorByPoint: true,
+        data: [
+            <?php
 
-$pastel=new pPie($imagen,$tabla);
+        $h=0;
+ for($i=1; $i<=count($datos); $i++){
+    ?>
+        {name: <?php echo "'".$datos[$h]."'"; ?>,
+        y: <?php echo $datos2[$h]; ?>},
+    <?php $h=$h+1; }  ?>
+        ]
+    }]
+});
+    </script>
 
-$pastel->draw3DPie(250,140,array("Radius"=>100,"DrawLabels"=>TRUE,"LabelStacked"=>TRUE,"Border"=>TRUE));
-
-$imagen->Render("graficapastel.png");
-
-
-echo ("<img src=\"graficapastel.png\">");
-?>

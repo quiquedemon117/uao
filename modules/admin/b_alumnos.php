@@ -9,7 +9,7 @@ $nombre = $_POST['FF'];
 $matricula = $_POST['FI'];
 $baris = 20;
 $hal = isset($_GET['hal']) ? $_GET['hal'] : 0;
-$pageSql = "SELECT * FROM alumnos where nombre like '".$nombre."%' and id like '".$matricula."%' ";
+$pageSql = "SELECT * FROM alumnos where nombre like '".$nombre."%' and id= '".$matricula."%' ";
 $pageQry = mysqli_query($koneksidb, $pageSql) or die ("error : ".mysqli_error($koneksidb));
 $jumlah	 = mysqli_num_rows($pageQry);
 $maksData= ceil($jumlah/$baris);
@@ -24,8 +24,9 @@ $maksData= ceil($jumlah/$baris);
   </tr>
   <tr>
     <td colspan="2">
-	<table class="table-list" width="100%" border="0" cellspacing="1" cellpadding="2">
-      <tr>
+      <div class="table">
+	<table class="table-list table table-hover table-condensed" width="100%" border="0" cellspacing="1" cellpadding="2">
+      <tr class="info">
         <th width="7%" align="left" bgcolor="#CCCCCC"><strong>Numero</strong></th>
         <th width="7%" align="left" bgcolor="#CCCCCC"><strong>Matricula</strong></th>
         <th width="30%" align="left" bgcolor="#CCCCCC"><strong>Nombre</strong></th>
@@ -45,11 +46,11 @@ $maksData= ceil($jumlah/$baris);
         <td align="left"><?php echo $nomor; ?></td>
         <td align="left"><?php echo $myData['id']; ?></td>
         <td align="left"><?php echo $myData['nombre']; ?></td>
-        <td align="left"><?php echo $myData['carrera']; ?></td>
+        <td align="left"><?php echo strtoupper($myData['carrera']); ?></td>
         <td align="left"><?php echo $myData['semestre']; ?></td>
-        <td width="30" align="center"><a href="?open=editalumnos&Kode=<?php echo $Kode; ?>" target="_self" alt="Edit Data">Editar</a></td>
-        <td width="30" align="center"><a href="?open=elialumnos&Kode=<?php echo $Kode; ?>" target="_self" alt="Delete Data" onclick="return confirm('Seguro que va a eliminar los datos del alumno... ?')">Borrar</a></td>
-        <td width="30" align="center"><a href="?open=adeudos&Kode=<?php echo $Kode; ?>" target="_self" alt="Edit Data">Adeudos a Dep.</a></td>
+        <td width="30" align="center"><a href="?open=editalumnos&Kode=<?php echo $Kode; ?>" target="_self" title="Editar Dato"><i class="glyphicon glyphicon-pencil"></i></a></td>
+        <td width="30" align="center"><a href="?open=elialumnos&Kode=<?php echo $Kode; ?>" target="_self" title="Eliminar Dato" onclick="return confirm('Seguro que va a eliminar los datos del alumno... ?')"><i class="glyphicon glyphicon-remove"></a></td>
+        <td width="30" align="center"><a href="?open=adeudos&Kode=<?php echo $Kode; ?>" target="_self" title="Ver Adeudo"><i class="glyphicon glyphicon-folder-open"></i></a></td>
       </tr>
       <?php } ?>
     </table></td>
@@ -65,3 +66,4 @@ $maksData= ceil($jumlah/$baris);
 	?></td>
   </tr>
 </table>
+</div>
