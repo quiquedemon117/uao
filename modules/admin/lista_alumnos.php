@@ -21,7 +21,12 @@ $_SESSION["carrera"]=$carre;
 $_SESSION["semestre"]=$semes;
 $_SESSION["materia"]=$mat;
 
+if($semes == "1"){
+$products = $koneksidb->query("select * from alumnos where carrera='$carre' and semestre='$semes' and estatus='INSCRITO'");
+}else{
 $products = $koneksidb->query("select * from alumnos where carrera='$carre' and semestre='$semes' and estatus='REINSCRITO'");
+}
+
 $products2 = $koneksidb->query("select * from alumnos where carrera='$carre' and semestre='$semes'");
 if (mysqli_num_rows ($products2) !=0)
 {
@@ -58,7 +63,11 @@ function(){
 if(empty($_POST)){
 $carre=$_SESSION["carrera"];
 $semes=$_SESSION["semestre"]; 
+if($semes == "1"){
+$products = $koneksidb->query("select * from alumnos where carrera='$carre' and semestre='$semes' and estatus='INSCRITO'");
+}else{
 $products = $koneksidb->query("select * from alumnos where carrera='$carre' and semestre='$semes' and estatus='REINSCRITO'");
+}
 
 }
 
@@ -85,14 +94,14 @@ while($r=$products->fetch_object()):?>
   if(isset($_SESSION["cart"])){ foreach ($_SESSION["cart"] as $c) { if($c["product_id"]==$r->id){ $found=true; break; }}}
   ?>
   <?php if($found):?>
-    <a href="?open=lista_alumnos" class="btn btn-info">Agregado</a>
+    <a href="?open=lista_alumnos" class="btn btn-success"><i class="glyphicon glyphicon-saved"></i></a>
   <?php else:?>
   <form class="form-inline" method="post" action="?open=addtocart">
   <input type="hidden" name="product_id" value="<?php echo $r->id; ?>">
     <div class="form-group">
-      <input type="number" name="q" value="1" style="width:100px;" min="1" class="form-control input-sm" placeholder="Calificacion">
+      <input type="number" name="q" value="1" style="width:80px;" min="1" class="form-control input-sm" placeholder="Calificacion">
     </div>
-    <button type="submit"  class="btn btn-success btn-xs">Calificacion</button>
+    <button type="submit"  class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i></button>
   </form> 
   <?php endif; ?>
   </td>

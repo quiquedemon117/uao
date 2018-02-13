@@ -1,9 +1,9 @@
 <?php
-header("Content-Type: text/html; charset=iso-8859-1 ");  
 ob_start();
 include_once "library/inc.connection.php";
 //$fol= "12345";
-$fol= $_POST['t1']; 
+$fol = ucwords($_POST['t1']);
+$rest = substr($fol, 0, -2); 
 $fol2= $_POST['t3'];
 $fol3= $_POST['t4'];
 $fol4= $_POST['t5'];  
@@ -13,7 +13,7 @@ $ge= "0";
 $iv= "0"; 
   
 	$strConsulta3 = "SELECT *  FROM escuela";
-	$r=mysqli_query($koneksidb, $strConsulta3) or die ("error : ".mysqli_error($koneksidb));
+	$r=mysqli_query($koneksidb, $strConsulta3) or die ("error : ".mysqli_error());
         $registro=mysqli_fetch_row($r);
 $dato1=$registro[0];
 $dato2=$registro[1];
@@ -44,90 +44,113 @@ $pdf=new FPDF();
 $pdf->AddPage();  
 //añadimos una página. Origen coordenadas, esquina superior izquierda, posición por defeto a 1 cm de los bordes.//logo de la tienda 
 //$pdf->Image('../admin.jpg',140,8);
-$pdf->Image('logo.jpg',140,15);
+$pdf->Image('logo.jpg',10,15);
 // Encabezado de la factura
-// $pdf->SetFont('Arial','B',14); 
+// $pdf->SetFont('Arial','B',14);
 //$pdf->Cell(190, 10, "Constancia", 0, 2, "C");
  //$pdf->SetFont('Arial','B',10);
  //$pdf->MultiCell(190,5, "Numero de Folio: $id_factura"."\n"."Fecha: $fecha_factura", 0, "C", false);
  //$pdf->Ln(2);
 // Datos de la tienda
-$top_datos=35; 
-$pdf->SetXY(20, $top_datos); 
+// 
+$asd = ucwords($fol);
+$numsas = 2;
+$asdx = substr($asd, 0, -$numsas);
+$pdf->SetFont('Arial','',8); 
+$pdf->SetXY(110, 15);
+$pdf->Cell(1,1,'CICLO ESCOLAR: 2017/2 (FEBRERO-JULIO 2017)', 0, 1, 'C');
+$pdf->SetXY(110, 15);
+$pdf->Cell(1,8, $asdx, 0, 1, 'C');
+$pdf->SetXY(110, 15);
+$pdf->Cell(1,16, 'RVOE 944 585 del 2 DE FEBRERO DE 1994, Clave 2006', 0, 1, 'C');
+$top_datos=5; 
+$pdf->SetXY(10, $top_datos); 
 //$pdf->Cell(190, 10, "Datos de la Escuela:", 0, 2, "J");
- $pdf->SetFont('Arial','B',11); 
 $pdf->MultiCell(190, //posición X 
 5, //posición Y 
-$nombre."\n". 
-"Domicilio: ".$domicilio."\n".
- "Modalidad: ".$modalidad."\n".
- "N de Acuerdo: ".$acuerdo."        Fecha: " .$fecha_factura,
+$nombre."\n". "DIRECCIÓN DE SERVICIOS ESCOLARES",
  0, // bordes 0 = no | 1 = si  
 "J", // texto justificado  
 false);
-$top_datos2=45; 
+$top_datos2=45;
 
 //Salto de línea 
 //$pdf->Ln(2);
-$top_productos = 95;  
+$top_productos = 65;  
 $pdf->SetFont('Arial','',11);  
  $pdf->SetXY(20, $top_productos); 
  $pdf->SetFillColor(217,217,217);
  $pdf->Cell(65, 10, 'Nombre', 1, 1, 'C','true');   
  //$pdf->Cell(40, 5, 'Nombre', 0, 1, 'C');  
-   $pdf->SetXY(85, 100);
-   $pdf->Cell(15, 5, 'Numero', 1, 1, 'C','true');  
+   $pdf->SetXY(85, 70);
+   $pdf->Cell(6, 5, 'P1', 1, 1, 'C','true');  
   // $pdf->Cell(40, 5, 'Numero', 0, 1, 'C');   
-    $pdf->SetXY(85, 95); 
-  $pdf->Cell(30, 5, utf8_encode('Calificacion Final'), 1, 1, 'C','true');
-  $pdf->SetXY(100, 100); 
-  $pdf->Cell(15, 5, 'Letra', 1, 1, 'C','true');  
+  $pdf->SetXY(85, 65); 
+  $pdf->Cell(30, 5, utf8_encode('Calificaciones'), 1, 1, 'C','true');
+  $pdf->SetXY(91, 70); 
+  $pdf->Cell(6, 5, 'P2', 1, 1, 'C','true');
+  $pdf->SetXY(97, 70);
+  $pdf->Cell(6, 5, 'P3', 1, 1, 'C','true');
+  $pdf->SetXY(103, 70);
+  $pdf->Cell(6, 5, 'EF', 1, 1, 'C','true');
+  $pdf->SetXY(109, 70);
+  $pdf->Cell(6, 5, 'PF', 1, 1, 'C','true');
   //$pdf->Cell(65, 5, 'Letra', 0, 1, 'C');
    $pdf->SetXY(115, $top_productos);  
    $pdf->Cell(75, 10, 'Observaciones', 1, 1, 'C','true');
-    $pdf->SetXY(20, 70);    
-$pdf->Cell(170, 5, 'RVOE OTORGADO POR LA SECRETARIA DE EDUCACION DE TABASCO', 0, 1, 'C'); 
-   $pdf->SetXY(20, 75);    
+   $pdf->SetXY(20, 45);    
 $pdf->Cell(170, 5, 'CONTROL DE CALIFICACIONES', 1, 1, 'C','true');
   //$pdf->Cell(65, 5, 'Observaciones', 0, 1, 'C');
  $precio_subtotal = 0; 
 // variable para almacenar el subtotal 
-$y = 105; 
+$y = 75; 
 // variable para la posición top desde la cual se empezarán a agregar los datos 
 
 $strConsulta4 = "SELECT * FROM alumnos where carrera='$fol' and semestre='$fol2' order by nombre";
-$rs9=mysqli_query($koneksidb, $strConsulta4) or die ("error : ".mysqli_error($koneksidb));
-	while( $row = mysqli_fetch_array ( $rs9 ))
-	 {
+$rs9=mysqli_query($koneksidb, $strConsulta4) or die ("error : ".mysqli_error());
+  while( $row = mysqli_fetch_array ( $rs9 ))
+   {
           $valor =$row["nombre"];
           $valor2 =$row["id"];
           $valor4=$row["semestre"];
 
-$cal = "SELECT calificacion FROM `$fol` where clave_alumno='$valor2' and nombre_materia='$fol3' ";
-$rt=mysqli_query($koneksidb, $cal) or die ("error : ".mysqli_error($koneksidb));
+$cal = "SELECT * FROM kardex where clave_alumno='$valor2' and nombre_materia='$fol3' ";
+$rt=mysqli_query($koneksidb, $cal) or die ("error : ".mysqli_error());
   while( $row = mysqli_fetch_array ( $rt ))
    {
-	$valor3 =$row["calificacion"];
-$pdf->SetFont('Arial','',8);  
+  $valor30 =$row["primer_p"];
+  $valor40 =$row["segundo_p"];
+  $valor50 =$row["tercer_p"];
+  $valor60 =$row["examen_f"];
+  $valor70 =$row["promedio_f"];
+$pdf->SetFont('Arial','',7);
 $pdf->SetXY(20, $y);    
 $pdf->Cell(65, 5, $valor, 1, 1, 'J');
 $pdf->SetXY(85, $y);  
-$pdf->Cell(15, 5, $valor3, 1, 1, 'C'); 
-$pdf->SetXY(20, 80);    
+$pdf->Cell(6, 5, $valor30, 1, 1, 'C');
+$pdf->SetXY(91, $y);  
+$pdf->Cell(6, 5, $valor40, 1, 1, 'C');
+$pdf->SetXY(97, $y);  
+$pdf->Cell(6, 5, $valor50, 1, 1, 'C');
+$pdf->SetXY(103, $y);  
+$pdf->Cell(6, 5, $valor60, 1, 1, 'C');
+$pdf->SetXY(109, $y);  
+$pdf->Cell(6, 5, $valor70, 1, 1, 'C'); 
+$pdf->SetXY(20, 50);    
 $pdf->Cell(65, 15, "TURNO: $fol5", 1, 1, 'C');
-$pdf->SetXY(85, 90);  
+$pdf->SetXY(85, 60);  
 $pdf->Cell(20, 5, 'MATERIA:', 1, 1, 'C');
-$pdf->SetXY(95, 80);  
+$pdf->SetXY(95, 50);  
 $pdf->Cell(10, 5, "$fol2", 1, 1, 'C');
-$pdf->SetXY(85, 80);  
+$pdf->SetXY(85, 50);  
 $pdf->Cell(10, 5, 'SEM:', 1, 1, 'C');
-$pdf->SetXY(85, 85);  
+$pdf->SetXY(85, 55);  
 $pdf->Cell(20, 5, 'DOCENTE:', 1, 1, 'C'); 
-$pdf->SetXY(105, 85);  
+$pdf->SetXY(105, 55);  
 $pdf->Cell(85, 5, "$fol4", 1, 1, 'C'); 
-$pdf->SetXY(105, 80);  
-$pdf->Cell(85, 5, "$fol", 1, 1, 'C');
-$pdf->SetXY(105, 90);  
+$pdf->SetXY(105, 50);  
+$pdf->Cell(85, 5, "$asdx", 1, 1, 'C');
+$pdf->SetXY(105, 60);  
 $pdf->Cell(85, 5, "$fol3", 1, 1, 'C');
 $pdf->SetXY(100, $y); 
 
@@ -172,18 +195,22 @@ $pdf->Cell(75, 5, '', 1, 1, 'C');
 }}
 
 //FIRMAS
-$pdf->SetFont('Arial','B',9);  
-$pdf->line(120, 262, 179, 262);
- $pdf->line(40, 262, 99, 262);
+
+$pdf->SetFont('Arial','B',9);
+$pdf->line(80, 240, 128, 240);
+$pdf->line(111, 262, 179, 262);
+ $pdf->line(38, 262, 99, 262);
+ $pdf->SetXY(78, 230);
+ $pdf->Cell(53, 5,'FECHA DE ENTREGA', 0, 0, 'C');
    $pdf->SetXY(120, 250);
-   $pdf->Cell(57, 5,'Director de Control y servicios Escolares', 0, 0, 'C');
+   $pdf->Cell(53, 5,'Director de Control y servicios Escolares', 0, 0, 'C');
    $pdf->SetXY(40, 262);
   $pdf->Cell(57, 5,"$fol4", 0, 0, 'C');
-  $pdf->SetXY(120, 262);
+  $pdf->SetXY(115, 262);
   $pdf->Cell(57, 5,"$fol6", 0, 0, 'C');
    $pdf->SetXY(40, 250);
    $pdf->Cell(57, 5, 'Firma del Catedratico' , 0, 0, 'C');
-   $pdf->SetXY(30, 270);    
+   $pdf->SetXY(30, 275); 
 $pdf->Cell(140, 1, 'ESTE DOCUMENTO NO ES VALIDO SI TIENE TACHADURAS, ENMENDADURAS O ALUMNOS AGREGADOS', 0, 1, 'C'); 
 
 $pdf->Ln(2); 

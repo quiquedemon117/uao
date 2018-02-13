@@ -36,6 +36,9 @@ if(isset($_GET['open'])) {
 		case 'kardex':
 			if(!file_exists ("kardex.php")) die ("¡Lo siento pagina vacia!");
 			include "kardex.php"; break;
+		case 'doc_kardex':
+			if(!file_exists ("doc_kardex.php")) die ("¡Lo siento pagina vacia!");
+			include "doc_kardex.php"; break;
 
 
 
@@ -58,6 +61,9 @@ if(isset($_GET['open'])) {
 		case 'calificacion':
 			if(!file_exists ("calificacion.php")) die ("¡Lo siento pagina vacia!");
 			include "calificacion.php"; break;
+		case 'calificacion_kardex':
+			if(!file_exists ("calificacion_kardex.php")) die ("¡Lo siento pagina vacia!");
+			include "calificacion_kardex.php"; break;
 		case 'edit_calificacion':
 			if(!file_exists ("editcalificacion.php")) die ("¡Lo siento pagina vacia!");
 			include "editcalificacion.php"; break;
@@ -65,20 +71,32 @@ if(isset($_GET['open'])) {
 
 # Datos de carrito
 		case 'lista_alumnos':
-			if(!file_exists ("lista_alumnos.php")) die ("¡Lo siento pagina vacia!");
+			if(!file_exists ("lista_alumnos_kardex.php")) die ("¡Lo siento pagina vacia!");
 			include "lista_alumnos.php"; break;
+		case 'lista_alumnos_kardex':
+			if(!file_exists ("lista_alumnos_kardex.php")) die ("¡Lo siento pagina vacia!");
+			include "lista_alumnos_kardex.php"; break;
 		case 'addtocart':
 			if(!file_exists ("addtocart.php")) die ("¡Lo siento pagina vacia!");
 			include "addtocart.php"; break;
+		case 'addtocart_kardex':
+			if(!file_exists ("addtocart_kardex.php")) die ("¡Lo siento pagina vacia!");
+			include "addtocart_kardex.php"; break;
 		case 'temporal':
 			if(!file_exists ("temporal.php")) die ("¡Lo siento pagina vacia!");
 			include "temporal.php"; break;
+		case 'temporal_k':
+			if(!file_exists ("temporal_k.php")) die ("¡Lo siento pagina vacia!");
+			include "temporal_k.php"; break;
 		case 'delfromcart':
 			if(!file_exists ("delfromcart.php")) die ("¡Lo siento pagina vacia!");
 			include "delfromcart.php"; break;
 		case 'process':
 			if(!file_exists ("process.php")) die ("¡Lo siento pagina vacia!");
 			include "process.php"; break;
+		case 'process_k':
+			if(!file_exists ("process_k.php")) die ("¡Lo siento pagina vacia!");
+			include "process_k.php"; break;
 
 
 

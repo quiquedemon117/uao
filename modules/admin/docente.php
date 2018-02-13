@@ -48,7 +48,7 @@ $maksData= ceil($jumlah/$baris);
       <?php
 	for ($h = 1; $h <= $maksData; $h++) {
 		$list[$h] = $baris * $h - $baris;
-		echo " <a href='?open=alumnos&hal=$list[$h]'>$h</a> ";
+		echo " <a href='?open=alumnos&hal=$list[$h]'>$h</a><label>,</label> ";
 	}
 	?></td>
   </tr>

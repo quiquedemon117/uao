@@ -74,19 +74,22 @@ include_once "library/inc.library.php";
              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Alumnos<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="?open=alumnos">Ver Todos</a></li><br>
-                  <li><a href="?open=agrealumnos">Agregar</a></li><br>
-                  <li><a href="?open=calificacion">Subir Calificacion</a></li><br>
-                  <li><a href="?open=edit_calificacion">Editar Calificacion</a></li><br>  
+                  <li><a href="?open=alumnos">Ver Todos</a></li>
+                  <li><a href="?open=agrealumnos">Agregar</a></li>
+                  <li><a href="?open=calificacion">Subir Calificacion(Constancia con calificasiones)</a></li>
+                  <li><a href="?open=calificacion_kardex">Subir Calificación(Kardex)</a></li>
+                  <li><a href="?open=edit_calificacion">Editar Calificación</a></li>
 
                 </ul>
               </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentos<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="?open=kardex">Acta de Titulación</a></li><br>
-                  <li><a href="?open=constancias">Constancias con Calificaciones</a></li><br>
-                  <li><a href="?open=bitacoras">Bitacoras</a></li><br>  
+                  <li><a href="?open=kardex">Acta de Titulación</a></li>
+                  <li><a href="?open=constancias">Constancias con Calificaciones</a></li>
+                  <li><a href="?open=doc_kardex">Kardex</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="?open=bitacoras">Bitacoras</a></li> 
                 </ul>
               </li>
                   <li class="dropdown">
@@ -95,14 +98,13 @@ include_once "library/inc.library.php";
                   <li><a href="?open=nuevo_Ad">Nuevo Adeudo</a></li>
                   <li><a href="?open=docentes">Agregar Docente</a></li>
                   <li><a href="?open=verdocentes">Ver Docentes</a></li>
-                  <br> 
                 </ul>
               </li>
                <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tablas<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="?open=carreras">Carreras</a></li><br>
-                   <li><a href="?open=materias">Materias</a></li><br>  
+                  <li><a href="?open=carreras">Carreras</a></li>
+                   <li><a href="?open=materias">Materias</a></li>  
                 </ul>
               </li>
 

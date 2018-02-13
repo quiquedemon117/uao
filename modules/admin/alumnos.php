@@ -6,6 +6,9 @@ include_once "library/inc.library.php";
 
 $baris = 20;
 $hal = isset($_GET['hal']) ? $_GET['hal'] : 0;
+$carre = isset($_GET['c']);
+$semes = isset($_GET['s']);
+$order = isset($_GET['z']);
 $pageSql = "SELECT * FROM alumnos";
 $pageQry = mysqli_query($koneksidb, $pageSql) or die ("error : ".mysqli_error());
 $jumlah	 = mysqli_num_rows($pageQry);
@@ -26,15 +29,32 @@ $maksData= ceil($jumlah/$baris);
       <tr class="info">
         <th width="6%" align="left" bgcolor="#CCCCCC"><strong>Numero</strong></th>
          <th width="7%" align="left" bgcolor="#CCCCCC"><strong>Matricula</strong></th>
-        <th width="35%" align="left" bgcolor="#CCCCCC"><strong>Nombre</strong></th>
-        <th width="35%" align="left" bgcolor="#CCCCCC"><strong>Carrera</strong></th>
-        <th width="7%" align="left" bgcolor="#CCCCCC"><strong>Semestre</strong></th>
+        <th width="35%" align="left" bgcolor="#CCCCCC"><strong><a href="?open=alumnos">Nombre</a></strong></th>
+        <th width="35%" align="left" bgcolor="#CCCCCC"><strong><a href="?open=alumnos&c=1">Carrera</a></strong></th>
+        <th width="7%" align="left" bgcolor="#CCCCCC"><strong> <a href="?open=alumnos&s=1">Semestre</a></strong></th>
         <th width="7%" bgcolor="#CCCCCC"><strong>Direccion</strong></th>
         <td colspan="2" align="center" bgcolor="#CCCCCC"><strong>Herramientas</strong></td>
         </tr>
       <?php	
 	$mySql = "SELECT * FROM alumnos ORDER BY nombre ASC LIMIT $hal, $baris";
-	$myQry = mysqli_query($koneksidb, $mySql)  or die ("Error : ".mysqli_error());
+  $mySql2 = "SELECT * FROM alumnos ORDER BY carrera ASC LIMIT $hal, $baris";
+  $mySql3 = "SELECT * FROM alumnos ORDER BY semestre ASC LIMIT $hal, $baris";
+
+  if($carre == ""){
+    $myQry = mysqli_query($koneksidb, $mySql)  or die ("Error : ".mysqli_error());
+    $order = "";
+  }
+
+  if($carre == "1"){
+    $myQry = mysqli_query($koneksidb, $mySql2)  or die ("Error : ".mysqli_error());
+    $order = "&c=1";
+  }
+
+  if($semes == "1"){
+    $myQry = mysqli_query($koneksidb, $mySql3)  or die ("Error : ".mysqli_error());
+    $order = "&s=1";
+  }
+
 	$nomor = $hal; 
 	while ($myData = mysqli_fetch_array($myQry)) {
 		$nomor++;
@@ -56,12 +76,19 @@ $maksData= ceil($jumlah/$baris);
   <tr class="selKecil">
     <td width="20"><b>Numero de Datos :</b> <?php echo $jumlah; ?> </td>
     <td width="384" align="right"><b>Pagina de :</b>
+      <nav aria-label="Page navigation example">
+  <ul class="pagination">
       <?php
-	for ($h = 1; $h <= $maksData; $h++) {
-		$list[$h] = $baris * $h - $baris;
-		echo " <a href='?open=alumnos&hal=$list[$h]'>$h</a> ";
+  for ($h = 1; $h <= $maksData; $h++) {
+    $list[$h] = $baris * $h - $baris;
+    ?>
+    <?php
+		echo "<a href='?open=alumnos$order&hal=$list[$h]'>$h</a><label>,</label>";
 	}
-	?></td>
+	?>
+  </ul>
+</nav>
+    </td>
   </tr>
 </table>
 </div>

@@ -62,7 +62,7 @@ $myQry2 = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($ko
 	  <tr>
 	  <td width="10%"><strong>Matricula</strong></td>
 	  <td width="1%"><strong>:</strong></td>
-	  <td width="85%" align="left"><input name="t1" class="form-control" value="<?php echo $valid;?>" size="10" maxlength="10" readonly / id="t1"></td></tr>
+	  <td width="85%" align="left"><input name="t1" class="form-control" value="<?php echo $valid;?>" size="10" maxlength="10" / id="t1"></td></tr>
 	  <tr>
 	  	<td><strong>Nombre</strong></td>
 	  	<td><strong>:</strong></td>
@@ -96,12 +96,12 @@ $myQry2 = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($ko
 	  <tr>
 	  	<td><strong>Codigo Postal</strong></td>
 	  	<td><strong>:</strong></td>
-	  	<td align="left"><input name="t8" class="form-control" type="number" value="" size="10" maxlength="6" required></td>
+	  	<td align="left"><input name="t8" class="form-control" type="number" value="" size="10" maxlength="6"></td>
 	  </tr>
 	  <tr>
 	  	<td><strong>Correo</strong></td>
 	  	<td><strong>:</strong></td>
-	  	<td align="left"><input name="t9" class="form-control" type="text" value="" size="50" maxlength="50" required></td>
+	  	<td align="left"><input name="t9" class="form-control" type="text" value="" size="50" maxlength="50" ></td>
 	  </tr>
 	  <tr>
 	  	<td><strong>Sexo</strong></td>
@@ -111,10 +111,10 @@ $myQry2 = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($ko
 	  <tr>
 	  	<td><strong>Telefono</strong></td>
 	  	<td><strong>:</strong></td>
-	  	<td align="left"><input name="t11" class="form-control" type="number" value="" size="20" maxlength="20" required></td>
+	  	<td align="left"><input name="t11" class="form-control" type="number" value="" size="20" maxlength="20"></td>
 	  </tr>
 	   <tr>
-	  	<td><strong>Procedencia</strong></td>
+	  	<td><strong>Lugar de Nacimiento</strong></td>
 	  	<td><strong>:</strong></td>
 	  	<td align="left"><input name="t12" class="form-control" type="text" value="" size="70" maxlength="70" required></td>
 	  </tr>

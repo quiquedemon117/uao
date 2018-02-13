@@ -53,7 +53,14 @@ $myData 	= mysqli_fetch_array($myQry);
     <tr>
       <td><strong>Carrera </strong></td>
       <td><strong>:</strong></td>
-      <td align="left"><input class="form-control" name="t1" value="<?php echo $myData['carrera']; ?>" size="50" maxlength="50" /></td>
+      <td align="left"><select class="form-control">
+        <?php
+        $querys = mysqli_query($koneksidb, "SELECT nombre_carrera FROM carrera") or die ("Error : ".mysqli_error());
+        while ($valores = mysqli_fetch_array($querys)) {
+        echo '<option value="'.$valores['nombre_carrera'].'">'.$valores['nombre_carrera'].'</option>';
+}
+        ?>
+      </select></td>
     </tr>
      <tr>
       <td><strong>Semestre </strong></td>

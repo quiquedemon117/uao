@@ -54,7 +54,7 @@ $h=$h+1;
     <?php $h=$h+1; }  ?>
     </table>
 
-<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+<div id="container" style="min-width: 310px; height: 600px; max-width: 800px; margin: 0 auto"></div>
 
 <script type="text/javascript">
 
