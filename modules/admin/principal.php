@@ -76,8 +76,8 @@ include_once "library/inc.library.php";
                 <ul class="dropdown-menu">
                   <li><a href="?open=alumnos">Ver Todos</a></li>
                   <li><a href="?open=agrealumnos">Agregar</a></li>
-                  <li><a href="?open=calificacion">Subir Calificacion(Constancia con calificasiones)</a></li>
-                  <li><a href="?open=calificacion_kardex">Subir Calificación(Kardex)</a></li>
+                  <li><a href="?open=calificacion">Subir Calificación(Constancia)</a></li>
+                  <li><a href="?open=calificacion_kardex">Subir Calificación(Constancia con calificasiones)</a></li>
                   <li><a href="?open=edit_calificacion">Editar Calificación</a></li>
 
                 </ul>
@@ -86,8 +86,9 @@ include_once "library/inc.library.php";
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentos<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="?open=kardex">Acta de Titulación</a></li>
-                  <li><a href="?open=constancias">Constancias con Calificaciones</a></li>
-                  <li><a href="?open=doc_kardex">Kardex</a></li>
+                  <li><a href="?open=constancias">Constancia</a></li>
+                  <li><a href="?open=doc_kardex">Constancia con calificasiones</a></li>
+                  <li><a href="?open=doc_k">Kardex</a></li>
                   <li role="separator" class="divider"></li>
                   <li><a href="?open=bitacoras">Bitacoras</a></li> 
                 </ul>
@@ -131,7 +132,7 @@ include_once "library/inc.library.php";
   <div class="form-group">
     <label class="sr-only" for="ejemplo_password_2">Nombre</label>
     <input type="text" name="FF" class="form-control" id="FF" 
-           placeholder="Nombre">
+           placeholder="Nombre" onkeyup="mayus(this);">
   </div>
   <button type="submit" class="btn btn-success">Buscar</button>
                </form></CENTER><hr>
@@ -141,4 +142,9 @@ include_once "library/inc.library.php";
         </div>
         </div>
     </body>
+                <script type="text/javascript">
+          function mayus(e) {
+              e.value = e.value.toUpperCase();
+          }
+            </script>
 </html>

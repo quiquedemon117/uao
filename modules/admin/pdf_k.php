@@ -153,41 +153,6 @@ $pdf->Cell(85, 5, "$asdx", 1, 1, 'C');
 $pdf->SetXY(105, 60);  
 $pdf->Cell(85, 5, "$fol3", 1, 1, 'C');
 $pdf->SetXY(100, $y); 
-
-
-if($valor3=='1'){
-$valor3='Uno'; 
-$pdf->Cell(15, 5, $valor3, 1, 1, 'C');}
-else if($valor3=='0'){
-$valor3='Cero'; 
-$pdf->Cell(15, 5, $valor3, 1, 1, 'C');}
-else if($valor3=='2'){
-$valor3='Dos'; 
-$pdf->Cell(15, 5, $valor3, 1, 1, 'C');}
-else if($valor3=='3'){
-$valor3='Tres'; 
-$pdf->Cell(15, 5, $valor3, 1, 1, 'C');}
- else if($valor3=='4'){
-$valor3='Cuatro'; 
-$pdf->Cell(15, 5, $valor3, 1, 1, 'C');}
-else if($valor3=='5'){
-$valor3='Cinco'; 
-$pdf->Cell(15, 5, $valor3, 1, 1, 'C');}
- else if($valor3=='6'){
-$valor3='Seis'; 
-$pdf->Cell(15, 5, $valor3, 1, 1, 'C');}
-else if($valor3=='7'){
-$valor3='Siete'; 
-$pdf->Cell(15, 5, $valor3, 1, 1, 'C');}
-else if($valor3=='8'){
-$valor3='Ocho'; 
-$pdf->Cell(15, 5, $valor3, 1, 1, 'C');}
-else if($valor3=='9'){
-$valor3='Nueve'; 
-$pdf->Cell(15, 5, $valor3, 1, 1, 'C');}
-else if($valor3=='10'){
-$valor3='Diez'; 
-$pdf->Cell(15, 5, $valor3, 1, 1, 'C');}
 $pdf->SetXY(115, $y);  
 $pdf->Cell(75, 5, '', 1, 1, 'C');
 //Cálculo del subtotal 

@@ -7,7 +7,7 @@ unset($_SESSION["semestre"]);
 unset($_SESSION["materia"]);
 ?>
 <h1 class="bnr-title" >Seleccionar<span> Datos</span></h1>
-              <CENTER><form method="post" id="califica" class="form-inline" role="form" action="?open=act_cali">
+              <CENTER><form method="post" id="califica" class="form-inline" role="form" action="?open=modificar_cali">
                         <div class="form-group">
     <label class="sr-only" for="ejemplo_email_2">Carrera</label>
      <select name='t10' id="carrera" class="form-control2" required ><option value="">Selecciona una carrera</option>
@@ -36,7 +36,7 @@ $myQry = mysqli_query($koneksidb, $mySql)  or die ("error : ".mysqli_error($kone
 
           <script type="text/javascript">
                 $(document).ready(function() {
-                  $('#semestre').change(function(){
+                  $('#califica').change(function(){
                     $.ajax({
                             type: "POST",
                             url: "selector.php",

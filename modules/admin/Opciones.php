@@ -67,6 +67,9 @@ if(isset($_GET['open'])) {
 		case 'edit_calificacion':
 			if(!file_exists ("editcalificacion.php")) die ("¡Lo siento pagina vacia!");
 			include "editcalificacion.php"; break;
+		case 'update_cali':
+			if(!file_exists ("update_cali.php")) die ("¡Lo siento pagina vacia!");
+			include "update_cali.php"; break;
 
 
 # Datos de carrito
@@ -97,6 +100,9 @@ if(isset($_GET['open'])) {
 		case 'process_k':
 			if(!file_exists ("process_k.php")) die ("¡Lo siento pagina vacia!");
 			include "process_k.php"; break;
+		case 'modificar_cali':
+			if(!file_exists ("act_cali.php")) die ("¡Lo siento pagina vacia!");
+			include "act_cali.php"; break;
 
 
 

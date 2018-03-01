@@ -2,6 +2,7 @@
 include_once "library/inc.sesadmin.php";
 include_once "library/inc.library.php";
 include_once "library/inc.connection.php";
+$id_userS = $_SESSION['ID_USER'];
 ?>
 <h1 class="bnr-title" >Ingrese Datos Para Generar<span> Kardex
 </span></h1>
@@ -11,7 +12,23 @@ include_once "library/inc.connection.php";
      <select name='t10' class="form-control2" required ><option></option>
 <?php
 $mySql = "SELECT nombre_carrera FROM carrera  ORDER BY nombre_carrera";
+
+$mySql2 = "SELECT nombre_carrera FROM carrera WHERE categoria_carrera = 'Licenciatura' OR categoria_carrera = 'Especialidad' ORDER BY nombre_carrera";
+
+$mySql3 = "SELECT nombre_carrera FROM carrera WHERE categoria_carrera = 'Maestria' ORDER BY nombre_carrera";
+
+if($id_userS == null){
+$myQry = null;
+}
+else if($id_userS == "1"){
 $myQry = mysqli_query($koneksidb, $mySql)  or die ("error : ".mysqli_error($koneksidb));
+}
+else if($id_userS == "2"){
+$myQry = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($koneksidb));
+}
+else if($id_userS == "3"){
+$myQry = mysqli_query($koneksidb, $mySql3)  or die ("error : ".mysqli_error($koneksidb));
+}
  while ($myData = mysqli_fetch_array($myQry)) {
 
 ?>    

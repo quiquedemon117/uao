@@ -14,9 +14,10 @@ $usuario1= $_POST['txtUsername'];
 $clave1= $_POST['txtPassword'];
 $rs = mysqli_query($koneksidb, "SELECT * FROM usuarios WHERE Nombre='$usuario1' AND Password='$clave1'"); 
 $_SESSION['SES_ADMIN'] = $usuario1;
-if (mysqli_num_rows ($rs) !=0)
-{
-	
+if (mysqli_num_rows ($rs) !=0) {
+$qr = mysqli_query($koneksidb, "SELECT id FROM usuarios WHERE Nombre='$usuario1' AND Password='$clave1'");
+$row = mysqli_fetch_array($qr);
+$_SESSION['ID_USER'] = $row['id'];
 	print "<script> swal({
   type: 'success',
   title: 'Bienvenido',
@@ -31,7 +32,7 @@ else
 {
 		print "<script> swal({
   type: 'error',
-  title: 'El usuario no existe',
+  title: 'El usuario y/o contraseña no coinciden',
   showConfirmButton: false,
   timer: 1500
 },

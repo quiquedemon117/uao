@@ -1,4 +1,5 @@
 <?php
+header("Content-Type: text/html; charset=iso-8859-1 ");
 ob_start();
 include_once "library/inc.connection.php";
 //$fol= "12345";
@@ -8,8 +9,6 @@ $fol3= $_POST['t4'];
 $fol4= $_POST['t5'];  
 $fol5= $_POST['t6']; 
 $fol6= $_POST['t7']; 
-$ge= "0"; 
-$iv= "0"; 
   
 	$strConsulta3 = "SELECT *  FROM escuela";
 	$r=mysqli_query($koneksidb, $strConsulta3) or die ("error : ".mysqli_error());

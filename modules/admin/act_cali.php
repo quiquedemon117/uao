@@ -1,57 +1,60 @@
 <?php
-if(!empty($_POST['carrera']) ){
-$carre = $_POST['carrera'];
-$semes = $_POST['semestre'];
-$mat = $_POST['materia'];
+include_once "library/inc.connection.php"; 
+include_once "library/inc.library.php";
+if(!empty($_POST['t10']) || !empty($_POST['t11']) || !empty($_POST['t12'])){
+$carre = $_POST['t10'];
+$semes = $_POST['t11'];
+$mat = $_POST['t12'];
 $_SESSION["carrera"]=$carre;
 $_SESSION["semestre"]=$semes;
 $_SESSION["materia"]=$mat;
 $pageSql = "SELECT * FROM alumnos where carrera='$carre' and semestre='$semes'";
 $pageQry = mysqli_query($koneksidb, $pageSql) or die ("error : ".mysqli_error());
 }
-else if(empty($_POST['carrera']) ){
-$carre = $_SESSION['carrera'];
-$semes = $_SESSION['semestre'];
-$mat = $_SESSION['materia']; 
+else if(empty($_POST['t10'])){
 $pageSql = "SELECT * FROM alumnos where carrera='$carre' and semestre='$semes'";
 $pageQry = mysqli_query($koneksidb, $pageSql) or die ("error : ".mysqli_error());
 }
 ?>
-<table width="100%" border="0" cellpadding="2" cellspacing="1" class="table-common">
-  <tr>
-    <td colspan="2" align="left"><h2><b>CALIFICACIONES:  <?php echo $mat; ?></b></h2></td>
-  </tr>
-  
-  <tr>
-    <td colspan="2"></td>
-  </tr>
-  <tr>
-    <td colspan="2">
-    <form method="post" class="form-inline" role="form" action="?open=cali">
-  <table class="table-list table table-hover table-condensed" width="100%" border="0" cellspacing="1" cellpadding="2">
-      <tr class="info">
-        <th width="10%" align="center" bgcolor="#CCCCCC"><strong>Id</strong></th>
-        <th width="50%" bgcolor="#CCCCCC"><strong>Nombre</strong></th>
-        <th width="10%" bgcolor="#CCCCCC"><strong>Calificacion</strong></th>
-        <td colspan="1" align="center" bgcolor="#CCCCCC"><strong>Actualizar calificacion</strong></td>
-        </tr>
-      <?php 
- while( $row = mysqli_fetch_array ( $pageQry ))
-   {
-          $valor =$row["id"];
-          $valor2 =$row["nombre"];
-  $mySql3 = "SELECT * FROM `$carre` where clave_alumno='$valor' and nombre_materia='$mat'";
-  $myQry3 = mysqli_query($koneksidb, $mySql3)  or die ("Error : ".mysqli_error());
-  while ($myData = mysqli_fetch_array($myQry3)) {
-    $valor3=$myData['calificacion'];
-  ?>
-      <tr>
-        <td align="left" ><input name='rs2' value='<?php echo $myData['clave_alumno']; ?>'></td>
-        <td align="left" ><?php echo $valor2; ?></td>
-        <td align="left" ><input name='rs' value='<?php echo $valor3; ?>'></td>
-        <td width="44" align="center"><button type="submit" name="btnSimpan2" class="btn btn-success">ACTUALIZAR</button></td>
-      </tr>
-      <?php }} ?>
-    </table></form> </td>
-  </tr>
-</table>    
+<h5 class="text-center"><b>CALIFICACIONES: <br>  <?php echo $mat; ?></b></h5>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-condensed">
+        <thead class="info">
+  <th>Matricula</th>
+  <th>Nombre</th>
+  <th class="text-center">1P</th>
+  <th class="text-center">2P</th>
+  <th class="text-center">3P</th>
+  <th class="text-center">EF</th>
+  <th class="text-center">PF</th>
+  <th class="text-center">Calificasión Final</th>
+  <th class="text-center">Subir Calificasión</th>
+</thead>
+<?php
+$lord = mysqli_query($koneksidb, "SELECT * FROM kardex");
+while ($rows = mysqli_fetch_array($lord)) { ?>
+<tr>
+  <form action="?open=update_cali" method="post">
+  <input type="text" name="oculto" class="hidden" value="<?php echo $rows['clave_alumno']; $id=$rows['clave_alumno'];?>">
+  <td><?php echo $rows['clave_alumno']; $id=$rows['clave_alumno'];?></td>
+  <td><?php 
+  $rs = mysqli_query($koneksidb, "SELECT nombre FROM alumnos WHERE id='$id'"); 
+  $lol = mysqli_fetch_array($rs);
+  echo $lol['nombre'];?></td>
+  <td align="center"><input type="number" class="form-control" name="1p" value="<?php echo $rows['primer_p']; ?>" style="width:60px;"></td>
+  <td align="center"><input type="number" class="form-control" name="2p" value="<?php echo $rows['segundo_p']; ?>" style="width:60px;"></td>
+  <td align="center"><input type="number" class="form-control" name="3p" value="<?php echo $rows['tercer_p']; ?>" style="width:60px;"></td>
+  <td align="center"><input type="number" class="form-control" name="ef" value="<?php echo $rows['examen_f']; ?>" style="width:60px;"></td>
+  <td align="center"><input type="number" class="form-control" name="pf" value="<?php echo $rows['promedio_f']; ?>" style="width:60px;"></td>
+  <td align="center"><input type="number" class="form-control" name="cf" value="<?php echo $rows['promedio_f']; ?>" style="width:60px;"></td>
+  <td align="center"><button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-save"></i></button></td>
+      </form>
+</tr>
+<?php } ?>
+      </table>
+    </div>
+  </div>
+</div>

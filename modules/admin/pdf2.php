@@ -9,8 +9,6 @@ $fol3= $_POST['t4'];
 $fol4= $_POST['t5'];  
 $fol5= $_POST['t6']; 
 $fol6= $_POST['t7']; 
-$ge= "0"; 
-$iv= "0"; 
   
 	$strConsulta3 = "SELECT *  FROM escuela";
 	$r=mysqli_query($koneksidb, $strConsulta3) or die ("error : ".mysqli_error($koneksidb));
@@ -55,7 +53,7 @@ $pdf->Image('logo.jpg',140,15);
 $top_datos=35; 
 $pdf->SetXY(20, $top_datos); 
 //$pdf->Cell(190, 10, "Datos de la Escuela:", 0, 2, "J");
- $pdf->SetFont('Arial','B',11); 
+ $pdf->SetFont('Arial','',11); 
 $pdf->MultiCell(190, //posición X 
 5, //posición Y 
 $nombre."\n". 

@@ -23,7 +23,7 @@ $mySql = "SELECT * FROM alumnos where id='$mat'";
  echo "
 <div class='col-md-offset-3 col-md-6'>
 <div class='form-group'>
-<form action='kard.php' method='post' enctype='multipart/form-data' name='frmadd' >
+<form action='titulacion.php' method='post' enctype='multipart/form-data' name='frmadd' >
 <table class='table table-hover table-striped' width='100%' style='margin-top:0px;'>
 	<tr>
 	  <thead colspan='3' class='thead-inverse'><h1>Datos Para Generar Kardex</h1></thead>

@@ -17,6 +17,7 @@ if(!empty($_POST)){
 $carre = $_POST['t10'];
 $semes = $_POST['t11'];
 $mat = $_POST['t12'];
+$cont = 0;
 $_SESSION["carrera"]=$carre;
 $_SESSION["semestre"]=$semes;
 $_SESSION["materia"]=$mat;
@@ -77,17 +78,19 @@ $products = $koneksidb->query("select * from alumnos where carrera='$carre' and 
 <thead>
   <th>Matricula</th>
   <th>Nombre</th>
-  <th></th>
+  <th class="text-center">Calificacion</th>
 </thead>
 <?php 
 /*
 * Apartir de aqui hacemos el recorrido de los productos obtenidos y los reflejamos en una tabla.
 */
+$i = 0;
 while($r=$products->fetch_object()):?>
+<?php $_SESSION['nf'] = $products->num_rows; ?>
 <tr>
   <td><?php echo $r->id;?></td>
-  <td><?php echo $r->nombre; ?></td>
-  <td style="width:260px;">
+  <td><?php echo $r->nombre;?></td>
+  <td align="center" style="width:260px;">
   <?php
   $found = false;
 
@@ -97,19 +100,18 @@ while($r=$products->fetch_object()):?>
     <a href="?open=lista_alumnos" class="btn btn-success"><i class="glyphicon glyphicon-saved"></i></a>
   <?php else:?>
   <form class="form-inline" method="post" action="?open=addtocart">
-  <input type="hidden" name="product_id" value="<?php echo $r->id; ?>">
+  <input type="hidden" name="product_id<?php echo $i++ ?>" value="<?php echo $r->id; ?>">
     <div class="form-group">
-      <input type="number" name="q" value="1" style="width:80px;" min="1" class="form-control input-sm" placeholder="Calificacion">
+      <input type="number" name="q<?php echo $i++; ?>" value="" style="width:80px;" min="1" class="form-control input-sm" placeholder="" required>
     </div>
-    <button type="submit"  class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i></button>
-  </form> 
   <?php endif; ?>
   </td>
 </tr>
-<?php endwhile; ?>
+<?php endwhile;?>
 </table>
+    <button type="submit"  class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+  </form> 
 <br><br><hr>
-
     </div>
   </div>
 </div>
