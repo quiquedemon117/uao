@@ -84,7 +84,7 @@ $products = $koneksidb->query("select * from alumnos where carrera='$carre' and 
 /*
 * Apartir de aqui hacemos el recorrido de los productos obtenidos y los reflejamos en una tabla.
 */
-$i = 0;
+$i = 1;
 while($r=$products->fetch_object()):?>
 <?php $_SESSION['nf'] = $products->num_rows; ?>
 <tr>
@@ -99,8 +99,10 @@ while($r=$products->fetch_object()):?>
   <?php if($found):?>
     <a href="?open=lista_alumnos" class="btn btn-success"><i class="glyphicon glyphicon-saved"></i></a>
   <?php else:?>
-  <form class="form-inline" method="post" action="?open=addtocart">
-  <input type="hidden" name="product_id<?php echo $i++ ?>" value="<?php echo $r->id; ?>">
+  <form class="form-inline" method="post" action="?open=add_cali">
+  <input type="hidden" name="product_id<?php echo $i; ?>" value="<?php echo $r->id; ?>">
+  <input type="hidden" name="carrera<?php echo $i; ?>" value="<?php echo $r->carrera; ?>">
+  <input type="hidden" name="materia<?php echo $i; ?>" value="<?php echo $_SESSION["materia"]; ?>">
     <div class="form-group">
       <input type="number" name="q<?php echo $i++; ?>" value="" style="width:80px;" min="1" class="form-control input-sm" placeholder="" required>
     </div>

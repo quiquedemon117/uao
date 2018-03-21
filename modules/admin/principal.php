@@ -15,9 +15,13 @@ include_once "library/inc.library.php";
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
 <link rel="stylesheet" type="text/css" href="../../css/sweetalert.css">
 <link rel="stylesheet" type="text/css" href="../../css/principal.css">
+<link rel="stylesheet" type="text/css" href="hightchart/css/highcharts.css">
+<link rel="stylesheet" type="text/css" href="../../css/fontawesome.css">
 <script src="../../js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../../js/sweetalert.min.js" type="text/javascript"></script>
+<script src="hightchart/highcharts.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="hightchart/js/modules/exporting.js" type="text/javascript" charset="utf-8" async defer></script>
 <style type="text/css" media="screen">
 .form-control2 {
     display: block;
@@ -37,6 +41,17 @@ include_once "library/inc.library.php";
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('../../images/loader.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
 </style>
 <style type="text/css" media="screen">
   .navbar-brand {
@@ -55,6 +70,7 @@ include_once "library/inc.library.php";
 </head>
 
 <body>
+              <div class="loader"></div>
     <div class="header">
       <div class="bg-color">
         <header id="main-header">
@@ -76,8 +92,8 @@ include_once "library/inc.library.php";
                 <ul class="dropdown-menu">
                   <li><a href="?open=alumnos">Ver Todos</a></li>
                   <li><a href="?open=agrealumnos">Agregar</a></li>
-                  <li><a href="?open=calificacion">Subir Calificación(Constancia)</a></li>
-                  <li><a href="?open=calificacion_kardex">Subir Calificación(Constancia con calificasiones)</a></li>
+                  <li><a href="?open=calificacion">Subir Calificación(Final)</a></li>
+                  <li><a href="?open=calificacion_kardex">Subir Calificación(Parcial)</a></li>
                   <li><a href="?open=edit_calificacion">Editar Calificación</a></li>
 
                 </ul>
@@ -88,7 +104,7 @@ include_once "library/inc.library.php";
                   <li><a href="?open=kardex">Acta de Titulación</a></li>
                   <li><a href="?open=constancias">Constancia</a></li>
                   <li><a href="?open=doc_kardex">Constancia con calificasiones</a></li>
-                  <li><a href="?open=doc_k">Kardex</a></li>
+                  <li><a href="?open=kardex">Kardex</a></li>
                   <li role="separator" class="divider"></li>
                   <li><a href="?open=bitacoras">Bitacoras</a></li> 
                 </ul>
@@ -142,6 +158,13 @@ include_once "library/inc.library.php";
         </div>
         </div>
     </body>
+<script type="text/javascript">
+
+      $(window).on("load", function() {
+          $(".loader").fadeOut("slow");
+      });
+
+</script>
                 <script type="text/javascript">
           function mayus(e) {
               e.value = e.value.toUpperCase();

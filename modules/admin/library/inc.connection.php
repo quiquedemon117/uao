@@ -12,4 +12,6 @@ if (! $koneksidb) {
 // memilih database pda server
 /*mysqli_select_db($my['dbs'])
 	 or die ("Base de Datos no encontrada, porfavor ponganse en contacto con el administrador del sistema!");*/
+date_default_timezone_set('America/Mexico_City');
+
 ?>

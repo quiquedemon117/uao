@@ -1,6 +1,3 @@
-<script src="hightchart/highcharts.js" type="text/javascript" charset="utf-8" async defer></script>
-<script src="hightchart/js/modules/exporting.js" type="text/javascript" charset="utf-8" async defer></script>
-<link rel="stylesheet" type="text/css" href="hightchart/css/highcharts.css">
 <?php
 
 include_once "library/inc.connection.php";
@@ -28,7 +25,13 @@ $h=$h+1;
 
 
 ?>
-<table width="100%" border="0" cellpadding="2" cellspacing="1" class="table-common">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <table width="100%" border="0" cellpadding="2" cellspacing="1" class="table-common">
   <tr>
     <td colspan="2" align="center"><h1><b>DATOS DE ALUMNOS POR CARRERA</b></h1></td>
   </tr>
@@ -38,15 +41,15 @@ $h=$h+1;
   </tr>
   <tr>
     <td colspan="2">
-	<table class="table-list table table-hover table-condensed" width="62%" border="0" cellspacing="1" cellpadding="2">
+  <table class="table-list table table-hover table-condensed" width="62%" border="0" cellspacing="1" cellpadding="2">
       <tr class="info">
         <th width="40%" align="left" bgcolor="#CCCCCC"><strong>Carrera</strong></th>
         <th width="20%" align="center" bgcolor="#CCCCCC"><strong>Cantidad de Alumnos</strong></th>
         </tr>
-	<?php	
-	$h=0;
+  <?php 
+  $h=0;
  for($i=1; $i<=count($datos); $i++){
-	?>
+  ?>
       <tr>
         <td align="left"><?php echo $datos[$h]; ?></td>
         <td align="left"><?php echo $datos2[$h]; ?></td>
@@ -55,6 +58,7 @@ $h=$h+1;
     </table>
 
 <div id="container" style="min-width: 310px; height: 600px; max-width: 800px; margin: 0 auto"></div>
+</body>
 
 <script type="text/javascript">
 
@@ -100,4 +104,5 @@ Highcharts.chart('container', {
     }]
 });
     </script>
+</html>
 

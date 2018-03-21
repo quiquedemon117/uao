@@ -154,7 +154,24 @@ $(document).ready(function(){
     var c = parseInt($("#tercerp'.$lol.'").val(), 10);
     var d = parseInt($("#examenf'.$lol.'").val(), 10);
     var suma = a+b+c+d;
-    var promedio = suma/4
+    var promedio = suma/4;
+
+      if(promedio >= 6.5 && promedio <= 7){
+        promedio = 7;
+      }
+
+      else if(promedio >= 7.5 && promedio <= 8){
+        promedio = 8;
+      }
+
+      else if(promedio >= 8.5 && promedio <= 9){
+        promedio = 9;
+      }
+
+      else if(promedio >= 9.5 && promedio <= 10){
+        promedio = 10;
+      }
+
     $("#promediof'.$lol.'").val(promedio);
   });
 
@@ -164,7 +181,24 @@ $(document).ready(function(){
     var c = parseInt($("#tercerp'.$lol.'").val(), 10);
     var d = parseInt($("#examenf'.$lol.'").val(), 10);
     var suma = a+b+c+d;
-    var promedio = suma/4
+    var promedio = suma/4;
+
+      if(promedio >= 6.5 && promedio <= 7){
+        promedio = 7;
+      }
+
+      else if(promedio >= 7.5 && promedio <= 8){
+        promedio = 8;
+      }
+
+      else if(promedio >= 8.5 && promedio <= 9){
+        promedio = 9;
+      }
+
+      else if(promedio >= 9.5 && promedio <= 10){
+        promedio = 10;
+      }
+
     $("#promediof'.$lol.'").val(promedio);
   });
 });
