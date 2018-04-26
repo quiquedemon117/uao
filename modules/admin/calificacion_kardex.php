@@ -15,8 +15,9 @@ $id_userS = $_SESSION['ID_USER'];
               <h1 class="bnr-title" >Seleccionar: Carrera, Semestre y Materia</span></h1>
               <CENTER><form method="post" name="califica" id="califica" class="form-inline" role="form" action="?open=lista_alumnos_kardex">
                         <div class="form-group">
+                          <label>Carrera</label><br>
     <label class="sr-only" for="ejemplo_email_2">Carrera</label>
-     <select name='t10' id="carrera" class="form-control2" required ><option value="">Selecciona una carrera</option>
+     <select name='t10' id="carrera" class="form-control" required ><option value="">Selecciona una carrera</option>
 <?php
 $mySql = "SELECT nombre_carrera FROM carrera  ORDER BY nombre_carrera";
 
@@ -48,11 +49,13 @@ $myQry = mysqli_query($koneksidb, $mySql3)  or die ("error : ".mysqli_error($kon
   </div>
   <div class="form-group">
     <label class="sr-only" for="ejemplo_password_2">Semestre</label>
-  <input type="number" name="t11" class="form-control2" id="semestre" min="1" max="9" placeholder="Semestre">
+    <label>Semestre</label><br>
+  <input type="number" name="t11" class="form-control" id="semestre" min="1" max="9" placeholder="Semestre">
   </div>
    <div class="form-group">
     <label class="sr-only" for="ejemplo_password_2">Materia</label>
-   <select name='t12' id="t12" class="form-control2" required >
+    <label>Materia</label><br>
+   <select name='t12' id="t12" class="form-control" required >
   </select>
 </div>
   </div><br>
@@ -65,7 +68,7 @@ $myQry = mysqli_query($koneksidb, $mySql3)  or die ("error : ".mysqli_error($kon
 
           <script type="text/javascript">
                 $(document).ready(function() {
-                  $('#califica').change(function(){
+                  $('#semestre').change(function(){
                     $.ajax({
                             type: "POST",
                             url: "selector.php",

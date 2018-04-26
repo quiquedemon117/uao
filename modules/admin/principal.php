@@ -22,6 +22,7 @@ include_once "library/inc.library.php";
 <script src="../../js/sweetalert.min.js" type="text/javascript"></script>
 <script src="hightchart/highcharts.js" type="text/javascript" charset="utf-8" async defer></script>
 <script src="hightchart/js/modules/exporting.js" type="text/javascript" charset="utf-8" async defer></script>
+<script type="text/javascript" src="../../js/funcion_input_vacio.js"></script>
 <style type="text/css" media="screen">
 .form-control2 {
     display: block;
@@ -118,7 +119,7 @@ include_once "library/inc.library.php";
                 </ul>
               </li>
                <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tablas<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Datos<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="?open=carreras">Carreras</a></li>
                    <li><a href="?open=materias">Materias</a></li>  
@@ -165,9 +166,9 @@ include_once "library/inc.library.php";
       });
 
 </script>
-                <script type="text/javascript">
+<script type="text/javascript">
           function mayus(e) {
               e.value = e.value.toUpperCase();
           }
-            </script>
+</script>
 </html>

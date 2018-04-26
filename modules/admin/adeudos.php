@@ -10,14 +10,14 @@ $mySql2 = "SELECT nombre FROM alumnos where id='$Kode' ";
 ?>
 <table width="100%" border="0" cellpadding="2" cellspacing="1" class="table-common">
   <tr>
-    <td colspan="2" align="center"><h1><b>DATOS DE ADEUDO</b></h1></td>
+    <td colspan="2" align="center"><h1>DATOS DE ADEUDO</h1></td>
   </tr>
   
   <tr>
     <td colspan="2"></td>
   </tr>
   <tr>
-    <td colspan="2" align="left"><h2><?php echo $myData['nombre'];} ?></h2></td>
+    <td colspan="2" align="center"><h2><?php echo $myData['nombre'];} ?></h2></td>
   </tr>
   <tr>
     <td colspan="2">

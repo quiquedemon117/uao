@@ -113,6 +113,9 @@ if(isset($_GET['open'])) {
 		case 'adeudos':
 			if(!file_exists ("adeudos.php")) die ("¡Lo siento pagina vacia!");
 			include "adeudos.php"; break;
+		case 'adeudo_existe':
+			if(!file_exists ("adeudo_existe.php")) die ("¡Lo siento pagina vacia!");
+			include "adeudo_existe.php"; break;
 		case 'eliadeudo':
 			if(!file_exists ("eliadeudo.php")) die ("¡Lo siento pagina vacia!");
 			include "eliadeudo.php"; break;

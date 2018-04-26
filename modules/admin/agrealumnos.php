@@ -8,11 +8,11 @@ $mes = $fecha_hoy[mon];
 $año = $fecha_hoy[year];
 
 if($mes >= 1 && $mes <= 7){
-$ciclo = "1";
+$ciclo = "2";
 }
 
 if($mes >= 8 && $mes <= 12){
-$ciclo = "2";
+$ciclo = "1";
 }
 
 $pageSql = "SELECT MAX(id) FROM alumnos";
@@ -26,7 +26,7 @@ if(isset($_POST['btnSimpan'])){
 $d1	=  $_POST['t1'];	
 $d2	=  $_POST['t2'];
 $d4	= $_POST['t4'] ;
-$d14	= $_POST['t14'] ;
+$d15	= $_POST['t15'] ;
 $d3	= $_POST['t3'] ;
 $d5	=  $_POST['t5'];	
 $d6	=  $_POST['t6'];
@@ -38,7 +38,7 @@ $d11	= $_POST['t11'] ;
 $d12	= $_POST['t12'] ;
 $d13 = $_POST['t13'];
 $d14 = $_POST['t14'];
-		$mySql	= "INSERT INTO alumnos VALUES('$valid', '$d1','$d2','$d4', '$d14','$d3','$d5','$d6','$d7','$d8','$d9','$d10','$d11','$d13', '$d12', '$d14')";
+		$mySql	= "INSERT INTO alumnos VALUES('$valid', '$d1','$d2','$d4', '$d15','$d3','$d5','$d6','$d7','$d8','$d9','$d10','$d11','$d13', '$d12', '$d14')";
 		$myQry	= mysqli_query($koneksidb, $mySql)  or die ("Error al agregar : ".mysqli_error($koneksidb));
 		if($myQry){				
 			// Refresh
@@ -54,7 +54,7 @@ $d14 = $_POST['t14'];
 	  <h1>Agregar alumnos</h1>
 
 	  	
-	  	<div class="col-md-5 text-left"><label>*Carrera:</label><select name='t2' required class="form-control" id="t2"><option></option>
+	  	<div class="col-md-5 text-left"><label>*Carrera:</label><select name='t2' required class="form-control" id="t2" title="Seleccionar una carrera"><option></option>
 <?php
 $mySql2 = "SELECT nombre_carrera FROM carrera  ORDER BY nombre_carrera";
 $myQry2 = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($koneksidb));
@@ -67,23 +67,23 @@ $myQry2 = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($ko
  } 
 ?>
 	  	</select></div>
-	  <div class="col-md-3 text-left"><label>*Matricula</label><input name="t1" class="form-control" value="<?php echo $valid;?>" size="10" maxlength="30" / id="t1"></div>
+	  <div class="col-md-3 text-left"><label>*Matricula</label><input name="t1" class="form-control" value="<?php echo $valid;?>" size="10" maxlength="30" / id="t1" title="Colocar la matricula del Alumno"></div>
 
 
 	  	<div class="col-md-1 text-left">
 	  	<label>Semestre:</label>
-	  	<input name="t4" class="form-control" type="NUMBER" value="" size="5" maxlength="1" required>
+	  	<input name="t4" class="form-control" type="NUMBER" value="" size="5" maxlength="1" required title="Colocar el semestre del Alumno">
 	  </div>
 	  	
-	  	<div class="col-md-5 text-left"><label>*Nombre:</label><input name="t3" class="form-control" type="text" value="" size="50" maxlength="150" required  id="nombre" onkeyup="mayus(this);"></div>
+	  	<div class="col-md-5 text-left"><label>*Nombre:</label><input name="t3" class="form-control" type="text" value="" size="50" maxlength="150" required  id="nombre" onkeyup="mayus(this);" title="Colocar el nombre del alumno"></div>
 	  	
 	  <div class="col-md-3 text-left">
 	  	<label>*Estatus:</label>
-	  	<select name="t14" class="form-control" required ><option></option><option>INSCRITO</option><option>REINSCRITO</option><option>BAJA TEMPORAL</option><option>EGRESADO</option><option>REVALIDADO</option></select>
+	  	<select name="t15" class="form-control" required title="Seleccionar el estatus del alumno"><option></option><option>INSCRITO</option><option>REINSCRITO</option><option>BAJA TEMPORAL</option><option>EGRESADO</option><option>REVALIDADO</option></select>
 	  </div>
 	  <div class="col-md-3 text-left">
 	  	<label>*Estado:</label>
-	  	<select name="t5" id="estados" class="form-control" required ><option></option>
+	  	<select name="t5" id="estados" class="form-control" required title="Seleccionar el Estado"><option></option>
 	  		<?php
 $mySql2 = "SELECT * FROM estados ORDER BY estado";
 $myQry2 = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($koneksidb));
@@ -99,38 +99,38 @@ $myQry2 = mysqli_query($koneksidb, $mySql2)  or die ("error : ".mysqli_error($ko
 	  </div>
 	  <div class="col-md-3 text-left">
 	  	<label>*Municipio:</label>
-	  	<select name="t6" class="form-control" id="municipios" type="text" value="" required><option></option></select>
+	  	<select name="t6" class="form-control" id="municipios" type="text" value="" required title="Seleccionar el municipio"><option></option></select>
 	  </div>
 	  <div class="col-md-3 text-left">
 	  	<label>*Localidad</label>
-	  	<input name="t7" class="form-control" type="text" value="" size="30" maxlength="254" required>
+	  	<input name="t7" class="form-control" type="text" value="" size="30" maxlength="254" required title="Coloque la localidad">
 	  </div>
 	  <div class="col-md-2 text-left">
 	  	<label>Codigo Postal:</label>
-	  	<input name="t8" class="form-control" type="number" value="" size="10" maxlength="6">
+	  	<input name="t8" class="form-control" type="number" value="" size="10" maxlength="6" title="Coloque el codigo postal">
 	  </div>
 	  <div class="col-md-3 text-left">
 	  	<label>Correo:</label>
-	  	<input name="t9" class="form-control" type="email" value="" size="50" maxlength="50" >
+	  	<input name="t9" class="form-control" type="email" value="" size="50" maxlength="50" title="Coloque el correo">
 	  </div>
 	  <div class="col-md-3 text-left">
 	  	<label>*Sexo:</label>
-	  	<select name='t10' class="form-control" required ><option></option><option>M</option><option>F</option></select></div>
+	  	<select name='t10' class="form-control" required title="Seleccione el sexo"><option></option><option>M</option><option>F</option></select></div>
 	  <div class="col-md-2 text-left">
 	  	<label>Telefono:</label>
-	  	<input name="t11" class="form-control" type="number" value="" size="20" maxlength="20">
+	  	<input name="t11" class="form-control" type="number" value="" size="20" maxlength="20" title="Coloque el numero de telefono">
 	  </div>
 	  <div class="col-md-3 text-left">
 	  	<label>*Fecha de Nacimiento:</label>
-	  	<input name="t12" class="form-control" type="date" value="" size="70" maxlength="70" required>
+	  	<input name="t12" class="form-control" type="date" value="" size="70" maxlength="70" title="Coloque la fecha de nacimiento" required>
 	  </div>
 	  	  <div class="col-md-4 text-left">
 	  	<label>*Bachillerato de procedencia:</label>
-	  	<input name="t13" class="form-control" type="text" value="" size="70" maxlength="70" required>
+	  	<input name="t13" class="form-control" type="text" value="" size="70" title="Coloque el bachiller del cual proviene" maxlength="70" required>
 	  </div>
 	  <div class="col-md-2 text-left">
 	  	<label>*Ciclo:</label>
-	  	<input name="t14" class="form-control" type="text" value="<?php echo $año."-".$ciclo; ?>" size="70" maxlength="70" readonly required>
+	  	<input name="t14" class="form-control" type="text" value="<?php echo $año."-".$ciclo; ?>" size="70" maxlength="70" readonly required title="Ciclo escolar">
 	  </div>
 	  </div>
 	  <div class="col-md-offset-5 col-md-2">

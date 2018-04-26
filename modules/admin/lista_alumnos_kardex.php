@@ -9,7 +9,7 @@ include_once "library/inc.library.php";
     <div class="col-md-12">
     <h3>Asegurese de agregar calificacion a todos los alumnos antes de dar click en continuar</h3>
       <a href="?open=temporal_k" class="btn btn-warning">Continuar</a>
-       <a href="?open=calificacion" class="btn btn-warning">Cancelar</a>
+       <a href="?open=calificacion_kardex" class="btn btn-warning">Cancelar</a>
       <br><br>
 <?php
 

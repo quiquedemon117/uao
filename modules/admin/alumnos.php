@@ -32,8 +32,8 @@ $maksData= ceil($jumlah/$baris);
         <th width="35%" align="left" bgcolor="#CCCCCC"><strong><a href="?open=alumnos">Nombre</a></strong></th>
         <th width="35%" align="left" bgcolor="#CCCCCC"><strong><a href="?open=alumnos&c=1">Carrera</a></strong></th>
         <th width="7%" align="left" bgcolor="#CCCCCC"><strong> <a href="?open=alumnos&s=1">Semestre</a></strong></th>
-        <th width="7%" bgcolor="#CCCCCC"><strong>Direccion</strong></th>
-        <td colspan="2" align="center" bgcolor="#CCCCCC"><strong>Herramientas</strong></td>
+        <th width="7%" bgcolor="#CCCCCC"><strong>Dirección</strong></th>
+        <td colspan="3" align="center" bgcolor="#CCCCCC"><strong>Herramientas</strong></td>
         </tr>
       <?php	
 	$mySql = "SELECT * FROM alumnos ORDER BY nombre ASC LIMIT $hal, $baris";
@@ -67,8 +67,9 @@ $maksData= ceil($jumlah/$baris);
         <td align="left"><?php echo ucwords($myData['carrera']); ?></td> 
         <td align="left"><?php echo $myData['semestre']; ?></td>
         <td align="left"><?php echo $myData['estado']; ?></td>
-        <td width="44" align="center"><a href="?open=editalumnos&Kode=<?php echo $Kode; ?>" target="_self" title="Editar Dato"><i class="glyphicon glyphicon-pencil"></i></a></td>
-        <td width="42" align="center"><a id="editar" href="?open=elialumnos&Kode=<?php echo $Kode; ?>" target="_self" title="Borrar Dato" onclick="return confirm('Seguro que va a eliminar los datos del alumno... ?')"><i class="glyphicon glyphicon-trash"></i></a></td>
+        <td align="center"><a href="?open=editalumnos&Kode=<?php echo $Kode; ?>" target="_self" title="Editar Dato"><i class="glyphicon glyphicon-pencil"></i></a></td>
+        <td align="center"><a href="?open=adeudos&Kode=<?php echo $Kode; ?>" title="Adeudos"><i class="glyphicon glyphicon-folder-open"></i></a></td>
+        <td align="center"><a id="editar" href="?open=elialumnos&Kode=<?php echo $Kode; ?>" target="_self" title="Borrar Dato" onclick="return confirm('Seguro que va a eliminar los datos del alumno... ?')"><i class="glyphicon glyphicon-trash"></i></a></td>
       </tr>
       <?php } ?>
     </table></td>

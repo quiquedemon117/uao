@@ -10,7 +10,15 @@ $docente	=  $_POST['docente'];
 		$myQry	= mysqli_query($koneksidb, $mySql)  or die ("Error al agregar : ".mysqli_error());
 		if($myQry){				
 			// Refresh
-			echo "<meta http-equiv='refresh' content='0; url=?open=alumnos'>";
+			echo "<script> swal({
+  type: 'success',
+  title: 'Los datos se registraron correctamente',
+  showConfirmButton: false,
+  timer: 1500
+},
+function(){
+  window.location.href='?open=verdocentes';
+}) </script>";
 		}
 	
  }
